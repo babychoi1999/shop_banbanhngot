@@ -9,4 +9,7 @@ class customer extends Model
 {
     use HasFactory;
     protected $table = "customer";
+    public function bill(){
+    	return $this->hasMany('App\Models\billDetail','id_product','id');
+    }
 }
