@@ -18,7 +18,7 @@
 </head>
 <body>
 
-	@include('layout.header')
+	@include('layout.header') 
 	<div class="rev-slider">
 		@yield('content');
 	</div> <!-- .container -->
