@@ -76,7 +76,7 @@
 						<div class="beta-products-list">
 							<h4>Sản phẩm khuyến mãi</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">Tìm thấy {{count($sanpham_khuyenmai)}} sản phẩm</p>
+								<p class="pull-left">Tìm thấy <span style="color: #3498db">{{count($sanpham_khuyenmai)}}</span> sản phẩm</p>
 								<div class="clearfix"></div>
 							</div>
 							<div class="row">

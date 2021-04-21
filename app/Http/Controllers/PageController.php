@@ -22,10 +22,14 @@ class PageController extends Controller
     }
     public function getLoaiSP($type){
         $sp_theoloai = product::where('id_type',$type)->get();
-    	return view('pages.loai_san_pham',compact('sp_theoloai'));
+        $sp_khac = product::where('id_type','<>',$type)->paginate(3);
+        $loai = productType::all();
+        $loai_sp = productType::where('id',$type)->first();
+    	return view('pages.loai_san_pham',compact('sp_theoloai','sp_khac','loai','loai_sp'));
     }
-    public function getChiTiet(){
-    	return view('pages.chitiet_sanpham');
+    public function getChiTiet($id){
+        $sanpham = product::where('id',$id)->first();
+    	return view('pages.chitiet_sanpham',compact('sanpham'));
     }
     public function getLienHe(){
     	return view('pages.lienhe');

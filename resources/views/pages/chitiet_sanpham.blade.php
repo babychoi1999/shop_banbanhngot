@@ -3,11 +3,11 @@
 <div class="inner-header">
 		<div class="container">
 			<div class="pull-left">
-				<h6 class="inner-title">Product</h6>
+				<h6 class="inner-title">Chi tiết {{$sanpham->name}}</h6>
 			</div>
 			<div class="pull-right">
 				<div class="beta-breadcrumb font-large">
-					<a href="index.html">Home</a> / <span>Product</span>
+					<a href="trangchu">Home</a> / <span>Thông tin chi tiết sản phẩm</span>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -21,13 +21,18 @@
 
 					<div class="row">
 						<div class="col-sm-4">
-							<img src="front/assets/dest/images/products/6.jpg" alt="">
+							<img src="front/image/product/{{$sanpham->image}}" alt="">
 						</div>
 						<div class="col-sm-8">
 							<div class="single-item-body">
-								<p class="single-item-title">Sample Woman Top</p>
+								<p class="single-item-title">{{$sanpham->name}}</p>
 								<p class="single-item-price">
-									<span>$34.55</span>
+									@if($np->promotion_price==0)
+												<span class="flash-sale">{{number_format($np->unit_price)}} VNĐ</span>
+									@else
+												<span class="flash-del">{{number_format($np->unit_price)}} VNĐ</span>
+												<span class="flash-sale">{{number_format($np->promotion_price)}} VNĐ</span>
+									@endif
 								</p>
 							</div>
 
