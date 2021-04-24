@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-use App\Models\Cart;
+
 class Cart
 {
 	public $items = null;

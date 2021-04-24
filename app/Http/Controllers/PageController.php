@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\product;
 use App\Models\productType;
+use App\Models\Cart;
+
 class PageController extends Controller
 {
     // function __construct(){
@@ -29,13 +31,22 @@ class PageController extends Controller
     }
     public function getChiTiet($id){
         $sanpham = product::where('id',$id)->first();
-    	return view('pages.chitiet_sanpham',compact('sanpham'));
+        $sp_tuongtu = product::where('id_type',$sanpham->id_type)->paginate(6);
+    	return view('pages.chitiet_sanpham',compact('sanpham','sp_tuongtu'));
     }
     public function getLienHe(){
     	return view('pages.lienhe');
     }
     public function getGioiThieu(){
     	return view('pages.gioithieu');
+    }
+    public function getAddToCart(Request $request,$id){
+        $product = product::find($id);
+        $oldcart = Session('cart')?Session::get('Cart'):null;
+        $cart = new Cart($oldcart);
+        $cart = add($product,$id);
+        $request->session()->put('cart',$cart);
+        return redirect()->back();
     }
 
 }

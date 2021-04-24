@@ -38,7 +38,7 @@
 								<div class="col-sm-4">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="front/image/product/{{$sp->image}}" alt="" height="250px"></a>
+											<a href="chitietsanpham/{{$sp->id}}"><img src="front/image/product/{{$sp->image}}" alt="" height="250px"></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$sp->name}}</p>
