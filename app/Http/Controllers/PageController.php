@@ -7,6 +7,7 @@ use App\Models\Slide;
 use App\Models\product;
 use App\Models\productType;
 use App\Models\Cart;
+use Session;
 
 class PageController extends Controller
 {
@@ -42,10 +43,23 @@ class PageController extends Controller
     }
     public function getAddToCart(Request $request,$id){
         $product = product::find($id);
-        $oldcart = Session('cart')?Session::get('Cart'):null;
-        $cart = new Cart($oldcart);
-        $cart = add($product,$id);
-        $request->session()->put('cart',$cart);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product,$id);
+        $request->Session()->put('cart',$cart);
+        return redirect()->back();
+    }
+    public function getRemoveCart($id){
+        $oldCart = Session::has('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if(count($cart->items)>0){
+            Session::put('cart',$cart);
+        }
+        else{
+            Session::forget('cart');//
+        }
+        
         return redirect()->back();
     }
 

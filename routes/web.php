@@ -23,4 +23,5 @@ Route::get('lienhe','App\Http\Controllers\PageController@getLienHe');
 Route::get('gioithieu','App\Http\Controllers\PageController@getGioiThieu');
 
 Route::get('addtocart/{id}','App\Http\Controllers\PageController@getAddToCart');
+Route::get('removecart/{id}','App\Http\Controllers\PageController@getRemoveCart');
 

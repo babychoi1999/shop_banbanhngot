@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\productType;
 
 use App\Models\Cart;
+use Session;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,9 +35,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layout.header',function($view){
              if(Session('cart')){
-                $oldcart = Session::get('cart');
-                $cart = new Cart($oldcart);
-                $view->with(['cart'=>Session::get('cart'),'product_cart'=>$cart->items,
+                $oldCart = Session::get('cart');
+                $cart = new Cart($oldCart);
+                $view->with(['cart'=>Session::get('cart'), 'product_cart'=>$cart->items,
                     'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
             }
         });

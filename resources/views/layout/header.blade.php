@@ -32,36 +32,44 @@
 					</div>
 
 					<div class="beta-comp">
-						@if(Session::has('cart'))
+						
 						<div class="cart">
 							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(Session::has('cart'))
 										{{Session('cart')->totalQty}}
 									  @else Trống
 									  @endif) <i class="fa fa-chevron-down"></i></div>
 							<div class="beta-dropdown cart-body">
-							
+							@if(Session::has('cart'))
 							@foreach($product_cart as $product)	
 								<div class="cart-item">
+									<a href="removecart/{{$product['item']['id']}}" class="cart-item-delete"><i class="fa fa-times"></i></a>
 									<div class="media">
 										<a class="pull-left" href="#"><img src="front/image/product/{{$product['item']['image']}}" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">{{$product['item']['name']}}</span>
-											<span class="cart-item-amount">{{$product['qty']}}*<span>{{$product['item']['unit_price']}}</span></span>
+											<span class="cart-item-amount">{{$product['qty']}}*<span>@if($product['item']['promotion_price'] == 0)
+														{{number_format($product['item']['unit_price'])}}
+													 @else
+													 	{{number_format($product['item']['promotion_price'])}}
+													 @endif
+													</span></span>
 										</div>
 									</div>
 								</div>
 							@endforeach
-						@endif
 								<div class="cart-caption">
-									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{Session('cart')->totalPrice}}</span></div>
+									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">
+										{{number_format(Session('cart')->totalPrice)}} VNĐ</span></div>
 									<div class="clearfix"></div>
 
 									<div class="center">
 										<div class="space10">&nbsp;</div>
 										<a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+							@endif
 									</div>
 								</div>
 							</div>
+							
 						</div> <!-- .cart -->
 					</div>
 				</div>

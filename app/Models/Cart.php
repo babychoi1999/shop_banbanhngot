@@ -1,9 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-class Cart
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Cart extends Model
 {
+    use HasFactory;
 	public $items = null;
 	public $totalQty = 0;
 	public $totalPrice = 0;
@@ -24,10 +28,18 @@ class Cart
 			}
 		}
 		$giohang['qty']++;
-		$giohang['price'] = $item->unit_price * $giohang['qty'];
+		if($item->promotion_price == 0){
+			$giohang['price'] = $item->unit_price * $giohang['qty'];
+			$this->totalPrice += $item->unit_price;
+		}
+		else{
+			$giohang['price'] = $item->promotion_price * $giohang['qty'];
+			$this->totalPrice += $item->promotion_price;
+
+		}
 		$this->items[$id] = $giohang;
 		$this->totalQty++;
-		$this->totalPrice += $item->unit_price;
+		
 	}
 	//xóa 1
 	public function reduceByOne($id){
