@@ -7,6 +7,9 @@ use App\Models\Slide;
 use App\Models\product;
 use App\Models\productType;
 use App\Models\Cart;
+use App\Models\customer;
+use App\Models\billDetail;
+use App\Models\bill;
 use Session;
 
 class PageController extends Controller
@@ -63,7 +66,58 @@ class PageController extends Controller
         return redirect()->back();
     }
     public function getCheckout(){
-        return view('pages.dat_hang');
+        if(Session::has('cart')){
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            //dd($cart);
+            return view('pages.dat_hang');
+        }
+        
+    }
+    public function postCheckout(Request $request){
+        $cart = Session::get('cart');
+        $this->validate($request,
+            [
+                'name'=>'required|min:3',
+                'email'=>'required|email|unique:customer,email',
+                'diachi'=>'required|min:3',
+                'phone'=>'required|digits:10',
+            ],[
+                'name.required'=>'Bạn chưa nhập tên',
+                'name.min'=>'Tên bạn nhập phải có ít nhất 3 ký tự',
+                'diachi.required'=>'Bạn chưa nhập đia chỉ giao hàng',
+                'diachi.min'=>'Địa chỉ bạn nhập phải có ít nhất 3 ký tự',
+                'email.required'=>'Bạn chưa nhập email',
+                'email.email'=>'Bạn chưa nhập đúng định dạng email',
+                'email.unique'=>'Email đã tồn tại'
+            ]);
+        $customer = new customer;
+        $customer->name = $request->name;
+        $customer->gender = $request->gender;
+        $customer->email = $request->email;
+        $customer->address = $request->diachi;
+        $customer->phone_number = $request->phone;
+        $customer->note = $request->notes;
+        $customer->save();
+
+        $bill = new bill;
+        $bill->id_customer = $customer->id;
+        $bill->date_order = date('Y-m-d');
+        $bill->total = $cart->totalPrice;
+        $bill->payment = $request->payment_method;
+        $bill->note = $request->notes;
+        $bill->save();
+
+        foreach($cart->items as $key=>$value){
+            $bill_detail = new billDetail;
+            $bill_detail->id_bill = $bill->id;
+            $bill_detail->id_product = $key; //hoặc $bill_detail = $value['items']['id'];
+            $bill_detail->quantity = $value['qty'];
+            $bill_detail->unit_price = $value['price']/$value['qty'];
+            $bill_detail->save();
+        }
+        Session::forget('cart');
+        return redirect()->back()->with('thongbao','Đặt hàng thành công!');
     }
 
 }
