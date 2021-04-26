@@ -62,5 +62,8 @@ class PageController extends Controller
         
         return redirect()->back();
     }
+    public function getCheckout(){
+        return view('pages.dat_hang');
+    }
 
 }
