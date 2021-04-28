@@ -10,6 +10,9 @@ use App\Models\Cart;
 use App\Models\customer;
 use App\Models\billDetail;
 use App\Models\bill;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Hash;
 use Session;
 
 class PageController extends Controller
@@ -119,5 +122,57 @@ class PageController extends Controller
         Session::forget('cart');
         return redirect()->back()->with('thongbao','Đặt hàng thành công!');
     }
+    public function getDangNhap(){
+        return view('pages.dangnhap');
+    }
+    public function postDangNhap(Request $request){
+        $this->validate($request,
+            [
+                'password'=>'min:3|max:20',
+                'email'=>'email',
+            ],[
+                'email.email'=>'Bạn chưa nhập đúng định dạng email',
+                'password.min'=>'Mật khẩu phải có ít nhất 6 ký tự',
+                'password.max'=>'Mật khẩu có tối đa 20 ký tự'
+            ]);
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+            return redirect('trangchu');
+        }
+        else{
+            return redirect('dangnhap')->with('thongbao','Thông tin email hoặc mật khẩu không chính xác');
+        }
+    }
+    public function getDangKy(){
+        return view('pages.dangky');
+    }
+     public function postDangKy(Request $request){
+        $this->validate($request,
+            [
+                'name'=>'min:3',
+                'email'=>'email|unique:customer,email', 
+                'password'=>'min:6|max:20',
+                'passwordagain'=>'same:password'
+            ],[
+                
+                'name.min'=>'Tên bạn nhập phải có ít nhất 3 ký tự',
+
+                'email.email'=>'Bạn chưa nhập đúng định dạng email',
+                'email.unique'=>'Email đã tồn tại',
+                'password.min'=>'Mật khẩu phải có ít nhất 6 ký tự',
+                'password.max'=>'Mật khẩu có tối đa 20 ký tự',
+                'passwordagain.required'=>'Bạn chưa xác minh mật khẩu',
+                'passwordagain.same'=>'Mật khẩu bạn nhập không giống nhau'
+            ]);
+        $user = new User;
+        $user->full_name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);// mã hóa
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->save();
+        return redirect()->back()->with('thongbao','Tạo tài khoản thành công, vui lòng đăng nhập');
+
+    }
+
 
 }

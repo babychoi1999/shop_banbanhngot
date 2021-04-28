@@ -26,4 +26,7 @@ Route::get('addtocart/{id}','App\Http\Controllers\PageController@getAddToCart');
 Route::get('removecart/{id}','App\Http\Controllers\PageController@getRemoveCart');
 Route::get('dathang','App\Http\Controllers\PageController@getCheckout');
 Route::post('dathang','App\Http\Controllers\PageController@postCheckout');
-
+Route::get('dangnhap','App\Http\Controllers\PageController@getDangNhap');
+Route::post('dangnhap','App\Http\Controllers\PageController@postDangNhap');
+Route::get('dangky','App\Http\Controllers\PageController@getDangKy');
+Route::post('dangky','App\Http\Controllers\PageController@postDangKy');
