@@ -72,7 +72,7 @@ class PageController extends Controller
         if(Session::has('cart')){
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
-            //dd($cart);
+            dd($cart);
             return view('pages.dat_hang');
         }
         
@@ -172,6 +172,13 @@ class PageController extends Controller
         $user->save();
         return redirect()->back()->with('thongbao','Tạo tài khoản thành công, vui lòng đăng nhập');
 
+    }
+
+    public function getTimKiem(Request $request){
+        $product = product::where('name','like','%'.$request->key.'%')->
+                            orWhere('unit_price',$request->key)->
+                            get();
+        return view('pages.search',compact('product'));
     }
 
 
