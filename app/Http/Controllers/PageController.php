@@ -11,6 +11,7 @@ use App\Models\customer;
 use App\Models\billDetail;
 use App\Models\bill;
 use App\Models\User;
+use App\Models\order;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 use Session;
@@ -69,13 +70,7 @@ class PageController extends Controller
         return redirect()->back();
     }
     public function getCheckout(){
-        if(Session::has('cart')){
-            $oldCart = Session::get('cart');
-            $cart = new Cart($oldCart);
-            dd($cart);
             return view('pages.dat_hang');
-        }
-        
     }
     public function postCheckout(Request $request){
         $cart = Session::get('cart');
@@ -100,27 +95,33 @@ class PageController extends Controller
         $customer->email = $request->email;
         $customer->address = $request->diachi;
         $customer->phone_number = $request->phone;
-        $customer->note = $request->notes;
         $customer->save();
-
+        
         $bill = new bill;
         $bill->id_customer = $customer->id;
-        $bill->date_order = date('Y-m-d');
+        $bill->date_order = date('Y-m-d h:i:s');
         $bill->total = $cart->totalPrice;
-        $bill->payment = $request->payment_method;
-        $bill->note = $request->notes;
+        $bill->payment = $request->payment_method;  
+        $bill->status = 0;
+        $bill->note = $request->note;
         $bill->save();
 
-        foreach($cart->items as $key=>$value){
-            $bill_detail = new billDetail;
-            $bill_detail->id_bill = $bill->id;
-            $bill_detail->id_product = $key; //hoặc $bill_detail = $value['items']['id'];
-            $bill_detail->quantity = $value['qty'];
-            $bill_detail->unit_price = $value['price']/$value['qty'];
-            $bill_detail->save();
+
+        foreach ($cart->items as $key => $value) {
+            $order = new order;
+            $order->id_product = $key;
+            $order->price = $value['price']/$value['qty'];
+            $order->id_bill = $bill->id;
+            $order->qty = $value['qty'];
+            $order->customer_name = $request->name;
+            $order->customer_contact = $request->phone;
+            $order->customer_email = $request->email;
+            $order->customer_address = $request->diachi;
+            $order->save();
         }
         Session::forget('cart');
         return redirect()->back()->with('thongbao','Đặt hàng thành công!');
+        
     }
     public function getDangNhap(){
         return view('pages.dangnhap');

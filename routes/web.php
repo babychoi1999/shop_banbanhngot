@@ -31,3 +31,6 @@ Route::post('dangnhap','App\Http\Controllers\PageController@postDangNhap');
 Route::get('dangky','App\Http\Controllers\PageController@getDangKy');
 Route::post('dangky','App\Http\Controllers\PageController@postDangKy');
 Route::get('timkiem','App\Http\Controllers\PageController@getTimKiem');
+
+//Admin
+Route::get('home','App\Http\Controllers\AdminController@getHome');

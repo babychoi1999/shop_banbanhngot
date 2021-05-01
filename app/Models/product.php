@@ -15,4 +15,7 @@ class product extends Model
     public function billDetail(){
     	return $this->hasMany('App\Models\billDetail','id_product','id');
     }
+    public function order(){
+    	return $this->hasMany('App\Models\order','id_product','id');
+    }
 }

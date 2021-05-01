@@ -13,6 +13,10 @@ class bill extends Model
     	return $this->hasMany('App\Models\billDetail','id_bill','id');
     
     }
+    public function order(){
+    	return $this->hasMany('App\Models\order','id_bill','id');
+    
+    }
     public function customer(){
     	return $this->belongsto('App\Models\customer','id_customer','id');
     }

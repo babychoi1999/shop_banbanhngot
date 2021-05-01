@@ -29,7 +29,7 @@
 						</div>
 					@endif
 					@if(session('thongbao'))
-						<div class="alert alert-success">
+						<div style="text-align: center;" class="alert alert-success">
 							{{session('thongbao')}}
 						</div>
 					@endif	
@@ -66,7 +66,7 @@
 						
 						<div class="form-block">
 							<label for="notes">Ghi chú</label>
-							<textarea id="notes" name="ghichu"></textarea>
+							<textarea id="notes" name="note"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -95,7 +95,7 @@
 								</div>
 								<div class="your-order-item">
 									<div class="pull-left"><p class="your-order-f18">Tổng tiền:</p></div>
-									<div class="pull-right"><h5 style="color: #3498db" class="color-black">{{number_format($totalPrice)}} VNĐ</h5></div>
+									<div class="pull-right"><h5 style="color: #3498db" class="color-black">@if(Session::has('cart')){{number_format($totalPrice)}}@else 0 @endif VNĐ</h5></div>
 									<div class="clearfix"></div>
 								</div>
 							</div>
