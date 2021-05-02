@@ -33,4 +33,10 @@ Route::post('dangky','App\Http\Controllers\PageController@postDangKy');
 Route::get('timkiem','App\Http\Controllers\PageController@getTimKiem');
 
 //Admin
-Route::get('home','App\Http\Controllers\AdminController@getHome');
+Route::get('/','App\Http\Controllers\AdminController@getHome');
+Route::group(['prefix'=>'admin'],function(){
+	Route::group(['prefix'=>'loaisanpham'],function(){
+		Route::get('danhsach','App\Http\Controllers\loaisanpham@getDSLSP');
+		Route::get('them','App\Http\Controllers\loaisanpham@getthemDSLSP');
+	});
+});
