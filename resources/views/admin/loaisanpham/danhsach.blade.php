@@ -31,7 +31,7 @@
 				      <td><img src="front/image/product/{{$p->image}}" alt="Not available" width="200px"></td>
 				      <td>
 				      	<a href="admin/loaisanpham/sua/{{$p->id}}" class="btn btn-default"><i class="fa fa-pen">Edit</i></a>
-				      	<a href="admin/loaisanpham/xoa/{{$p->id}}" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
+				      	<a href="admin/loaisanpham/xoa/{{$p->id}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
 				      </td>
 				    </tr>
 				    @endforeach

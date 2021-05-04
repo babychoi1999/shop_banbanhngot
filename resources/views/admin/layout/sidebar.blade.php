@@ -53,7 +53,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="admin/loaisanpham/danhsach" class="nav-link">
+                  <i class="far fa-address-book nav-icon"></i>
+                  <p>Danh sách loại sản phẩm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="admin/loaisanpham/them" class="nav-link">
                   <i class="far fa-plus-square nav-icon"></i>
                   <p>Thêm loại sản phẩm</p>
                 </a>
