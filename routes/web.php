@@ -38,5 +38,9 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'loaisanpham'],function(){
 		Route::get('danhsach','App\Http\Controllers\loaisanpham@getDSLSP');
 		Route::get('them','App\Http\Controllers\loaisanpham@getthemDSLSP');
+		Route::post('them','App\Http\Controllers\loaisanpham@postthemDSLSP');
+		Route::get('sua/{id}','App\Http\Controllers\loaisanpham@getsuaDSLSP');
+		Route::post('sua/{id}','App\Http\Controllers\loaisanpham@postsuaDSLSP');
+		Route::get('xoa/{id}','App\Http\Controllers\loaisanpham@getxoaDSLSP');
 	});
 });

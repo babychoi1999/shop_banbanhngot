@@ -83,7 +83,7 @@
 				<nav class="main-menu">
 					<ul class="l-inline ov">
 						<li><a href="trangchu">Trang chủ</a></li>
-						<li><a href="loaisanpham">Loại sản phẩm</a>							
+						<li><a onclick="return false" href="loaisanpham">Loại sản phẩm</a>						
 							<ul class="sub-menu">
 								@foreach($loai_sp as $loai)
 								<li><a href="loaisanpham/{{$loai->id}}">{{$loai->name}}</a></li>

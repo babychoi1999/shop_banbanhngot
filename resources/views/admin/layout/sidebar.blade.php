@@ -37,32 +37,30 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa fa-home"></i>
               <p>
                 Trang chủ
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+            <a href="admin/loaisanpham/danhsach" class="nav-link">
+              <i class="nav-icon fas fa fa-list"></i>
               <p>
                 Loại sản phẩm
-                <i class="fas fa-angle-left right"></i>
               </p>
+              <i class="right fas fa-angle-down"></i>
             </a>
-            @foreach($loai_sp as $loai_sp)
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{$loai_sp->name}}</p>
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Thêm loại sản phẩm</p>
                 </a>
               </li>
             </ul>
-            @endforeach
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

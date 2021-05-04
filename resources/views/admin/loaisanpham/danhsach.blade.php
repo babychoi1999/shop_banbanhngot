@@ -12,65 +12,29 @@
           		<a href="admin/loaisanpham/them" class="btn btn-success float-right m-3">Add</a>
           	</div>
           	<div class="col-md-12">
-          		<table class="table">
-				  <thead class="thead-dark">
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">First</th>
-				      <th scope="col">Last</th>
-				      <th scope="col">Handle</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
-				  </tbody>
-				</table>
-
-				<table class="table">
+				<table class="table table-bordered">
 				  <thead class="thead-light">
 				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">First</th>
-				      <th scope="col">Last</th>
-				      <th scope="col">Handle</th>
+				      <th scope="col">ID</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Description</th>
+				      <th scope="col">Image</th>
+				      <th scope="col">Action</th>
 				    </tr>
 				  </thead>
 				  <tbody>
+				  	@foreach($pType as $p)
 				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
+				      <th scope="row">{{$p->id}}</th>
+				      <td>{{$p->name}}</td>
+				      <td>{{$p->description}}</td>
+				      <td><img src="front/image/product/{{$p->image}}" alt="Not available" width="200px"></td>
+				      <td>
+				      	<a href="admin/loaisanpham/sua/{{$p->id}}" class="btn btn-default"><i class="fa fa-pen">Edit</i></a>
+				      	<a href="admin/loaisanpham/xoa/{{$p->id}}" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
+				      </td>
 				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
+				    @endforeach
 				  </tbody>
 				</table>
           	</div>

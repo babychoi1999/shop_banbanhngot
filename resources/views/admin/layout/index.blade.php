@@ -33,12 +33,14 @@
 @include('admin.layout.sidebar')
 
 @yield('content')
-  
+ 
+<div style="margin-bottom: 10px"></div>  
 @include('admin.layout.footer')
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery -->
+<script src="ckeditor/ckeditor.js"></script>
+
 <script src="adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
