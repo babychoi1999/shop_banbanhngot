@@ -18,6 +18,11 @@
               {{session('thongbao')}} <!--Kiểm tra nếu có session thông báo thì hiển thị trên màn hình -->
           </div>
         @endif
+         @if(session('loi'))
+            <div class="alert alert-danger">
+              {{session('loi')}}
+            </div>
+         @endif
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-md-6"> 

@@ -50,12 +50,12 @@
 				      <td>{{$sp->description}}</td>
 				      <td>{{$sp->unit_price}}</td>
 				      <td>{{$sp->promotion_price}}</td>
-				      <td><img src="front/image/product/{{$sp->image}}" alt="Not available" width="200px"></td>
+				      <td><img src="front/image/product/{{$sp->image}}" alt="Not available" width="150px"></td>
 				      <td>{{$sp->unit}}</td>
 				      <td>{{$sp->new}}</td>
 				      <td>
-				      	<a href="admin/sanpham/sua/{{$sp->id}}" class="btn btn-default"><i class="fa fa-pen">Edit</i></a>
-				      	<a href="admin/sanpham/xoa/{{$sp->id}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-trash">Delete</i></a>
+				      	<a href="admin/sanpham/sua/{{$sp->id}}" class="btn btn-default"><i class="fa fa-pen"></i></a>
+				      	<a href="admin/sanpham/xoa/{{$sp->id}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 				      </td>
 				    </tr>
 				    @endforeach

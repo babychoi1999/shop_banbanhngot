@@ -51,7 +51,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('them','App\Http\Controllers\sanphamController@postthemSP');
 		Route::get('sua/{id}','App\Http\Controllers\sanphamController@getsuaSP');
 		Route::post('sua/{id}','App\Http\Controllers\sanphamController@postsuaSP');
-		Route::post('xoa/{id}','App\Http\Controllers\sanphamController@getxoaSP');
+		Route::get('xoa/{id}','App\Http\Controllers\sanphamController@getxoaSP');
 
 	});
 });

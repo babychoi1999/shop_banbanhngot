@@ -35,7 +35,7 @@ class loaisanpham extends Controller
             $file = $request->file('hinhanh');
             $duoi = $file->getClientOriginalExtension();
         if($duoi != "png" && $duoi != "jpg"){
-            return redirect("admin/loaisanpham/sua".$id)->with('loi','Bạn chỉ được chọn file có đuôi "png" hoặc "jpg"');
+            return redirect("admin/loaisanpham/them")->with('loi','Bạn chỉ được chọn file có đuôi "png" hoặc "jpg"');
         }
                 $name = $file->getClientOriginalName();//Lấy tên gốc của hình
                 $image  = Str::random(4)."_". $name; //random tên hình để tránh bị trùng
