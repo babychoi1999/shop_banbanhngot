@@ -43,4 +43,15 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('sua/{id}','App\Http\Controllers\loaisanpham@postsuaDSLSP');
 		Route::get('xoa/{id}','App\Http\Controllers\loaisanpham@getxoaDSLSP');
 	});
+
+	Route::group(['prefix'=>'sanpham'],function(){
+		Route::get('danhsach','App\Http\Controllers\sanphamController@getDSSP');
+		Route::get('timkiem','App\Http\Controllers\sanphamController@gettimkiem');
+		Route::get('them','App\Http\Controllers\sanphamController@getthemSP');
+		Route::post('them','App\Http\Controllers\sanphamController@postthemSP');
+		Route::get('sua/{id}','App\Http\Controllers\sanphamController@getsuaSP');
+		Route::post('sua/{id}','App\Http\Controllers\sanphamController@postsuaSP');
+		Route::post('xoa/{id}','App\Http\Controllers\sanphamController@getxoaSP');
+
+	});
 });

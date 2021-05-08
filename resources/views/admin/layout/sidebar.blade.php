@@ -66,6 +66,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="admin/loaisanpham/danhsach" class="nav-link">
+              <i class="nav-icon fas fa fa-list"></i>
+              <p>
+                 Sản phẩm
+              </p>
+              <i class="right fas fa-angle-down"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="admin/sanpham/danhsach" class="nav-link">
+                  <i class="far fa-address-book nav-icon"></i>
+                  <p>Danh sách sản phẩm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="admin/sanpham/them" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Thêm sản phẩm</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
         </ul>
       </nav>

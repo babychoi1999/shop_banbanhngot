@@ -26,7 +26,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="adminlte/plugins/summernote/summernote-bs4.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 @include('admin.layout.header')
 
@@ -39,6 +39,17 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+          $("searchbutton").click(function(){
+            var rowCount = $("#searchtable tr").length;
+            alert(rowCount); 
+          });
+        });
+</script>
+<script src="resources/css/search.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
 
 <script src="adminlte/plugins/jquery/jquery.min.js"></script>

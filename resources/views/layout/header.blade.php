@@ -29,7 +29,7 @@
 					        <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
 					        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
 						</form>
-					</div>
+				</div>
 
 					<div class="beta-comp">
 						
