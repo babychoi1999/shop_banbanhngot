@@ -89,6 +89,23 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="admin/order/danhsach" class="nav-link">
+              <i class="nav-icon fas fa fa-list"></i>
+              <p>
+                 Đơn hàng
+              </p>
+              <i class="right fas fa-angle-down"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="admin/order/danhsach" class="nav-link">
+                  <i class="far fa-address-book nav-icon"></i>
+                  <p>Danh sách đơn hàng</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
         </ul>
       </nav>

@@ -52,6 +52,11 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('sua/{id}','App\Http\Controllers\sanphamController@getsuaSP');
 		Route::post('sua/{id}','App\Http\Controllers\sanphamController@postsuaSP');
 		Route::get('xoa/{id}','App\Http\Controllers\sanphamController@getxoaSP');
-
+	});
+	Route::group(['prefix'=>'order'],function(){
+		Route::get('danhsach','App\Http\Controllers\orderController@getorder');
+		Route::get('timkiem','App\Http\Controllers\orderController@gettimkiemOrder');
+		Route::get('huy/{id}','App\Http\Controllers\orderController@gethuyOrder');
+		Route::get('chitiet','App\Http\Controllers\orderController@getchitietOrder');
 	});
 });
