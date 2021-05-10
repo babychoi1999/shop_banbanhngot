@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer(['layout.header','admin.layout.sidebar'],function($view){ // Truyền function qua view header
             $loai_sp = productType::all();
-           
             $view->with('loai_sp',$loai_sp);// truyền biến $loai_sp qua view header
         });
 

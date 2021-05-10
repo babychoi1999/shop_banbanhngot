@@ -57,6 +57,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('danhsach','App\Http\Controllers\orderController@getorder');
 		Route::get('timkiem','App\Http\Controllers\orderController@gettimkiemOrder');
 		Route::get('huy/{id}','App\Http\Controllers\orderController@gethuyOrder');
-		Route::get('chitiet','App\Http\Controllers\orderController@getchitietOrder');
+		Route::get('chitiet/{id}','App\Http\Controllers\orderController@getchitietOrder');
+		Route::get('xacnhan/{id}','App\Http\Controllers\orderController@getxacnhanorder');
 	});
 });

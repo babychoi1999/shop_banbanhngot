@@ -99,7 +99,7 @@ class PageController extends Controller
         
         $bill = new bill;
         $bill->id_customer = $customer->id;
-        $bill->date_order = date('Y-m-d h:i:s');
+        $bill->date_order = date('Y-m-d H:i:s');
         $bill->total = $cart->totalPrice;
         $bill->payment = $request->payment_method;  
         $bill->status = 0;

@@ -10,18 +10,18 @@
         <div class="row">
         	<div class="col-md-12">
         		<div class="main"  style="float: left; width: 50%">
-			  <!-- Another variation with a button -->
-			  <div class="input-group">
-			  	<form  action="admin/sanpham/timkiem" method="get" class="form-inline">
-			  		<input type="text" class="form-control" name="keysearch" placeholder="Search a record">
-			    	<div class="input-group-append">
-			      	<button class="btn btn-secondary" id="searchbutton" type="submit">
-			        <i class="fa fa-search"></i>
-			      	</button>
-			    </div>
-			  	</form>
-			  </div>
-			</div>
+				  <!-- Another variation with a button -->
+				  <div class="input-group">
+				  	<form  action="admin/sanpham/timkiem" method="get" class="form-inline">
+				  		<input type="text" class="form-control" name="keysearch" placeholder="Search a record">
+				    	<div class="input-group-append">
+				      	<button class="btn btn-secondary" id="searchbutton" type="submit">
+				        <i class="fa fa-search"></i>
+				      	</button>
+				    </div>
+				  	</form>
+				  </div>
+				</div>
         			<a href="admin/sanpham/them" class="btn btn-success float-right m-3">Add</a>
           	</div>
           	
@@ -70,4 +70,5 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     <!-- /.content -->
+	</div>
 @endsection
