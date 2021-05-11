@@ -59,5 +59,6 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('huy/{id}','App\Http\Controllers\orderController@gethuyOrder');
 		Route::get('chitiet/{id}','App\Http\Controllers\orderController@getchitietOrder');
 		Route::get('xacnhan/{id}','App\Http\Controllers\orderController@getxacnhanorder');
+		Route::get('xoasanpham/{id_bill}/{id}','App\Http\Controllers\orderController@getxoasanpham');
 	});
 });

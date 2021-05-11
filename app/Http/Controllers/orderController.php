@@ -17,12 +17,23 @@ class orderController extends Controller
     	$bill_detail = bill::find($id);
     	$order_detail = order::where('id_bill',$id)->get();
     	
-    	return view('admin.order.chitiet',compact('bill_detail','order_detail'));
+    	return view('admin/order/chitiet',compact('bill_detail','order_detail'));
     }
     public function getxacnhanorder(Request $request, $id){
     	$bill_confirm = bill::find($id);
     	$bill_confirm->status = 1;
     	$bill_confirm->save();
     	return redirect('admin/order/danhsach')->with('thongbao','Xác nhận đơn hàng thành công!');
+    }
+    public function gethuyOrder($id){
+        $bill_cancel = bill::find($id);
+        $bill_cancel->delete();
+        return redirect()->back()->with('thongbao','Hủy đơn hàng thành công!');
+    }
+    public function getxoasanpham($id_bill,$id){
+        $product_remove = order::where('id_bill',$id_bill)->where('id_product',$id);
+        $product_remove->delete();
+
+        return redirect()->back()->with('thongbao','Xóa sản phẩm thành công!');
     }
 }

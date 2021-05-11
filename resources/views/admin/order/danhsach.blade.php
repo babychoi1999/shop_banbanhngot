@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -48,7 +48,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($bill as $b)
-                                    <tr style="text-align: center;">
+                                    <tr>
                                         <th scope="row">{{$b->id}}</th>
                                         <td>{{$b->customer->name}}</td>
                                         <td>{{$b->customer->phone_number}}</td>

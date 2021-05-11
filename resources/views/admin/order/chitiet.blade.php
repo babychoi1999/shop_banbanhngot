@@ -7,6 +7,12 @@
     <section class="content">
         <div class="container-fluid">
             <hr class="dashed">
+            @if(session('thongbao'))
+            <div class="alert alert-success">
+                {{session('thongbao')}}
+                <!--Kiểm tra nếu có session thông báo thì hiển thị trên màn hình -->
+            </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -64,7 +70,7 @@
                                         <td>{{number_format(($or->product->unit_price)*($or->qty))}} VNĐ</td>
                                         <td>{{"later"}}</td>
                                         <td style="white-space: nowrap;">
-                                            <a href="admin/order/huy/" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="admin/order/xoasanpham/{{$or->id_bill}}/{{$or->id_product}}" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi đơn hàng?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

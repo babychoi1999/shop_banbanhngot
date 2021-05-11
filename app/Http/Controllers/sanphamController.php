@@ -12,7 +12,7 @@ class sanphamController extends Controller
 {
     //
     public function getDSSP(){
-    	$sanpham = product::orderBy('id','asc')->get();
+    	$sanpham = product::orderBy('id','asc')->paginate(8);
     	return view('admin.sanpham.danhsach',compact('sanpham'));
     }
     public function getthemSP(Request $req){
