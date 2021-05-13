@@ -7,13 +7,14 @@ use App\Models\product;
 use App\Models\productType;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
+use DB;
 
 class sanphamController extends Controller
 {
     //
     public function getDSSP(){
-    	$sanpham = product::orderBy('id','asc')->paginate(8);
-    	return view('admin.sanpham.danhsach',compact('sanpham'));
+    	$products = product::orderBy('id','desc')->get();
+    	return view('admin.sanpham.danhsach',compact('products'));
     }
     public function getthemSP(Request $req){
         $loaisp = productType::all();
@@ -122,15 +123,35 @@ class sanphamController extends Controller
         $sp_xoa = product::find($id)->delete();
          return redirect()->back()->with('thongbao','Xóa thành công!');
     }
-    public function gettimkiem(Request $request){
-    	$product = product::where('name','like','%'.$request->keysearch.'%')->orWhere('unit_price',$request->keysearch)->get();
-
-        $display=null;
-
-        if(count($product)==0)
-            $display="none";
-        else
-            $display="block";
-    	return view('admin.sanpham.timkiem',compact('product','display'));
+    public function search(Request $request){
+        if ($request->ajax()) {
+            $output = "";
+            $products = product::where('name','like','%'.$request->search.'%')->get();
+                        // ->orWhere('unit_price','like','%'.$request->search.'%')
+                        // ->orWhere('unit','like','%'.$request->search.'%')->orderBy('created_at','desc')
+            if ($products) {
+                foreach ($products as $key => $product) {
+                    $output .= '<tr>'.
+                            '<td>'.$product->id.'</td>'.
+                            '<td>'.$product->name.'</td>'.
+                            '<td>'.$product->productType->name.'</td>'.
+                            '<td>'.$product->description.'</td>'.
+                            '<td>'.$product->unit_price.'</td>'.
+                            '<td>'.$product->promotion_price.'</td>'.
+                            '<td><img class="rounded" src="front/image/product/'.$product->image.'" alt="Not available" width="150px"></td>'.
+                            '<td>'.$product->unit.'</td>'.
+                            '<td>@if('.$product->new.' == 1)
+                                {{"Có"}}
+                                @else
+                                {{"không"}}
+                                @endif</td>'.
+                        '</tr>';
+                }
+                return response($output);
+            }
+            
+            
+        }
+    	
     }
 }

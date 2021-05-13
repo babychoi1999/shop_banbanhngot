@@ -12,14 +12,15 @@
                 <div class="main" style="float: left; width: 50%">
                     <!-- Another variation with a button -->
                     <div class="input-group">
-                        <form action="admin/sanpham/timkiem" method="get" class="form-inline">
-                            <input type="text" class="form-control" name="keysearch" placeholder="Search a record">
-                            <div class="input-group-append">
+                        {{-- <form action="admin/sanpham/timkiem" method="get" class="form-inline"> --}}
+                            <input type="text" class="form-control" id="search" name="search" placeholder="Search a record">
+                            {{-- <div class="input-group-append">
                                 <button class="btn btn-secondary" id="searchbutton" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
-                        </form>
+                            --}}
+                            {{-- </form> --}}
                     </div>
                 </div>
                 <a href="admin/sanpham/them" class="btn btn-success float-right m-3">Add</a>
@@ -27,10 +28,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Loại sản phẩm </h3>
+                        <h3 class="card-title">Sản phẩm </h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered" id="searchtable" width="100%">
+                        <div>
+                            <h3 align="text-center">Total Data: <span id="total_records"></span></h3>
+                        </div>
+                        <table class="table table-bordered" width="100%">
                             <thead class="thead-light">
                                 <tr>
                                     <th>ID</th>
@@ -45,8 +49,11 @@
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($sanpham as $sp)
+                            <tbody id="ajax">
+                            </tbody>
+                            <tbody id="initial_table">
+                                @if($products)
+                                @foreach($products as $sp)
                                 <tr>
                                     <th scope="row">{{$sp->id}}</th>
                                     <td>{{$sp->name}}</td>
@@ -54,7 +61,7 @@
                                     <td>{{$sp->description}}</td>
                                     <td>{{$sp->unit_price}}</td>
                                     <td>{{$sp->promotion_price}}</td>
-                                    <td><img class="rounded" src="front/image/product/{{$sp->image}}" alt="Not available" width="150px"></td>
+                                    <td><img src="front/image/product/{{$sp->image}}" alt="No available" width="150px"></td>
                                     <td>{{$sp->unit}}</td>
                                     <td>@if($sp->new == 1)
                                         {{"Có"}}
@@ -68,13 +75,15 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center">{{$sanpham->links('pagination::bootstrap-4')}}</div>
+        {{-- <div class="text-center">{{$sanpham->links('pagination::bootstrap-4')}}</div>
+        --}}
         <!-- ./col -->
         <!-- /.row -->
         <!-- Main row -->

@@ -46,7 +46,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 	Route::group(['prefix'=>'sanpham'],function(){
 		Route::get('danhsach','App\Http\Controllers\sanphamController@getDSSP');
-		Route::get('timkiem','App\Http\Controllers\sanphamController@gettimkiem');
+		
 		Route::get('them','App\Http\Controllers\sanphamController@getthemSP');
 		Route::post('them','App\Http\Controllers\sanphamController@postthemSP');
 		Route::get('sua/{id}','App\Http\Controllers\sanphamController@getsuaSP');
@@ -61,4 +61,5 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('xacnhan/{id}','App\Http\Controllers\orderController@getxacnhanorder');
 		Route::get('xoasanpham/{id_bill}/{id}','App\Http\Controllers\orderController@getxoasanpham');
 	});
+	Route::get('/search','App\Http\Controllers\sanphamController@search');
 });
