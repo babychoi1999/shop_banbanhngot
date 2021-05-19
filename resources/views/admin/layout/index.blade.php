@@ -49,18 +49,17 @@
         var value = $(this).val();
         $.ajax({
             type: 'get',
-            url: "{{ URL::to('
-            search ')}}",
+            url: "{{route('search')}}",
             data: {
                 'search': value,
             },
             success: function(data) {
                 $('#initial_table').hide();
                 $('#ajax').html(data);
-            }
+            },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
+            },
         });
     });
     $.ajaxSetup({ header: { 'csrftoken': '{{csrf_token()}}' } });

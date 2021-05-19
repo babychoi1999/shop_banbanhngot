@@ -24,8 +24,8 @@ class PageController extends Controller
     // }
     public function getIndex(){
     	$slide = Slide::all();
-    	$newProduct = product::where('new',1)->paginate(4);
-    	$sanpham_khuyenmai = product::where('promotion_price','<>',0)->paginate(8); 
+    	$newProduct = product::where('new',1)->get();
+    	$sanpham_khuyenmai = product::where('promotion_price','<>',0)->limit(32)->get(); 
     	//dd($newProduct);// giống như var_dump(): xem kết quả trả về
     	//return view('pages.trangchu',['slide'=>$slide]);
     	return view('pages.trangchu',compact('slide','newProduct','sanpham_khuyenmai'));//Compact tạo ra 1 mảng nhờ vào các biên truyền vào
@@ -39,7 +39,7 @@ class PageController extends Controller
     }
     public function getChiTiet($id){
         $sanpham = product::where('id',$id)->first();
-        $sp_tuongtu = product::where('id_type',$sanpham->id_type)->paginate(6);
+        $sp_tuongtu = product::where('id_type',$sanpham->id_type)->get();
     	return view('pages.chitiet_sanpham',compact('sanpham','sp_tuongtu'));
     }
     public function getLienHe(){
@@ -64,10 +64,14 @@ class PageController extends Controller
             Session::put('cart',$cart);
         }
         else{
-            Session::forget('cart');//
+            Session::forget('cart');
         }
-        
         return redirect()->back();
+    }
+
+    public function getViewCart(){
+
+        return view('pages.giohang');
     }
     public function getCheckout(){
             return view('pages.dat_hang');

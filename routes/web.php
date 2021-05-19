@@ -22,6 +22,7 @@ Route::get('chitietsanpham/{id}','App\Http\Controllers\PageController@getChiTiet
 Route::get('lienhe','App\Http\Controllers\PageController@getLienHe');
 Route::get('gioithieu','App\Http\Controllers\PageController@getGioiThieu');
 
+Route::get('xemgiohang','App\Http\Controllers\PageController@getViewCart');
 Route::get('addtocart/{id}','App\Http\Controllers\PageController@getAddToCart');
 Route::get('removecart/{id}','App\Http\Controllers\PageController@getRemoveCart');
 Route::get('dathang','App\Http\Controllers\PageController@getCheckout');
@@ -46,7 +47,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 	Route::group(['prefix'=>'sanpham'],function(){
 		Route::get('danhsach','App\Http\Controllers\sanphamController@getDSSP');
-		
+		Route::get('search','App\Http\Controllers\sanphamController@search')->name('search');
 		Route::get('them','App\Http\Controllers\sanphamController@getthemSP');
 		Route::post('them','App\Http\Controllers\sanphamController@postthemSP');
 		Route::get('sua/{id}','App\Http\Controllers\sanphamController@getsuaSP');
@@ -61,5 +62,5 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('xacnhan/{id}','App\Http\Controllers\orderController@getxacnhanorder');
 		Route::get('xoasanpham/{id_bill}/{id}','App\Http\Controllers\orderController@getxoasanpham');
 	});
-	Route::get('/search','App\Http\Controllers\sanphamController@search');
+	
 });

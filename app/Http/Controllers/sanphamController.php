@@ -140,11 +140,11 @@ class sanphamController extends Controller
                             '<td>'.$product->promotion_price.'</td>'.
                             '<td><img class="rounded" src="front/image/product/'.$product->image.'" alt="Not available" width="150px"></td>'.
                             '<td>'.$product->unit.'</td>'.
-                            '<td>@if('.$product->new.' == 1)
-                                {{"Có"}}
-                                @else
-                                {{"không"}}
-                                @endif</td>'.
+                            '<td>('.$product->new.'==1)?có:không</td>'.
+                            '<td style="white-space: nowrap;">
+                                        <a href="admin/sanpham/sua/'.$product->id.'" class="btn btn-default"><i class="fa fa-pen"></i></a>
+                                        <a href="admin/sanpham/xoa/'.$product->id.'" onclick="return confirm(Bạn có chắc chắn muốn xóa?)" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>'.
                         '</tr>';
                 }
                 return response($output);

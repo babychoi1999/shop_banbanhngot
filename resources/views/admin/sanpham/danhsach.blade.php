@@ -31,9 +31,6 @@
                         <h3 class="card-title">Sản phẩm </h3>
                     </div>
                     <div class="card-body">
-                        <div>
-                            <h3 align="text-center">Total Data: <span id="total_records"></span></h3>
-                        </div>
                         <table class="table table-bordered" width="100%">
                             <thead class="thead-light">
                                 <tr>
@@ -45,7 +42,6 @@
                                     <th>Giá khuyến mại</th>
                                     <th>Hình ảnh</th>
                                     <th>Đơn vị</th>
-                                    <th>Mới</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -63,12 +59,6 @@
                                     <td>{{$sp->promotion_price}}</td>
                                     <td><img src="front/image/product/{{$sp->image}}" alt="No available" width="150px"></td>
                                     <td>{{$sp->unit}}</td>
-                                    <td>@if($sp->new == 1)
-                                        {{"Có"}}
-                                        @else
-                                        {{"không"}}
-                                        @endif
-                                    </td>
                                     <td style="white-space: nowrap;">
                                         <a href="admin/sanpham/sua/{{$sp->id}}" class="btn btn-default"><i class="fa fa-pen"></i></a>
                                         <a href="admin/sanpham/xoa/{{$sp->id}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
